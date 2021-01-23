@@ -1,0 +1,56 @@
+#!/bin/python
+
+import sys
+import subprocess
+import shlex
+import os
+
+confpath = "/root/.mfakeys.conf"
+dataDict = {}
+
+def basicChecks():
+	if(len(sys.argv) > 1):
+		option = sys.argv[1]
+	else:
+		option = raw_input()
+		if not option:
+			print("Please provide the app for which you wish to generate the MFA Code")
+			exit()
+
+	f = open(confpath, "r")
+	for x in f:
+	  data = x.split('::')
+	  dataDict[data[0]] = data[1].rstrip()
+
+	if option == 'list-options':
+		for k in sorted (dataDict):
+			print(k)
+		exit()
+	return option
+
+def getCodeForApp(option):
+	mfakey = None
+	if dataDict.has_key(option):
+		mfakey = dataDict[option]
+	else:
+		print("No MFA key for app " + option)
+		exit()
+
+	command = "oathtool -b --totp " + mfakey
+	cmd = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = cmd.communicate()
+	returncode = cmd.returncode
+	if returncode != 0:
+		print("Error executing command", error)
+	mfacode = str(output).rstrip()
+
+	command = "copyq copy '" + mfacode + "'"
+	cmd = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE, stderr=subprocess.PIPE)
+	output, error = cmd.communicate()
+	returncode = cmd.returncode
+	if returncode != 0:
+		print("Error executing command", error)
+	print(mfacode)
+
+option = basicChecks()
+getCodeForApp(option)

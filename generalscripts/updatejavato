@@ -1,0 +1,18 @@
+#!/bin/python
+import sys
+import os
+src64 = '/usr/java/jdk1.8.0_161'
+src32 = '/usr/java/jdk1.8.0_221-i586'
+dest = '/usr/java/latest'
+program_name = sys.argv[0]
+version = sys.argv[1]
+if(version == "64"):
+    os.remove(dest)
+    os.symlink(src64, dest)
+    print "Java Arch Changed to", version
+elif(version == "32"):
+    os.remove(dest)
+    os.symlink(src32, dest)
+    print "Java Arch Changed to", version
+else:
+    print "Invalid Arch", version

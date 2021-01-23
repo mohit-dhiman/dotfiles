@@ -1,0 +1,10 @@
+#!/bin/python
+import sys
+import os
+
+remote = sys.argv[1]
+key = remote.split(".")[0]
+cmd = "ssh -i ~/.ssh/" + key + " " + remote
+print("Executing... ")
+print(cmd)
+os.system(cmd)
