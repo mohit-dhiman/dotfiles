@@ -48,14 +48,17 @@ tmux set-option -g status-left "\
 #[fg=$cSessionTXT, bg=$cSessionBG, bold]#{?client_prefix,#[bg=$cSessionPrefixBG],} #S:#I.#P\
 #[fg=$cSessionBG, bg=$cInActiveWindowBG]#{?client_prefix,#[fg=$cSessionPrefixBG],}#{?#{==:#I,1},#[bg=$cActiveWindowBG],}"
 
+cDateBG="colour202"
+cDateTXT="colour230"
+cLoadBG="colour241"
+cLoadTXT="colour195"
+cReturnBG="colour223"
+cReturnTXT="colour232"
+
 # Right of Status bar
 tmux set-option -g status-right "\
-#[fg=colour214, bg=colour234] \
-#[fg=colour234, bg=colour214] Mohit \
-#[fg=colour223, bg=colour234] #(~/dotfiles/tmux_scripts/uptime.sh) \
-#[fg=colour246, bg=colour234]  %b %d '%y\
-#[fg=colour109]  %H:%M \
-#[fg=colour248, bg=colour239]"
+#[fg=$cLoadBG, bg=$cStatusBG]#[fg=$cLoadTXT bg=$cLoadBG]#(~/dotfiles/tmux/scripts/loadaverage.sh) \
+#[fg=$cDateBG, bg=$cLoadBG]#[fg=$cDateTXT, bg=$cDateBG ,bold]  %a %b %d, %H:%M "
 
 # Active Window in Status bar
 tmux set-window-option -g window-status-current-format "\
