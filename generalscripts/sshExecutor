@@ -37,7 +37,7 @@ def getSSHCommand(option):
 		exit()
 
 	command = "copyq copy '" + sshCMD + "'"
-	print command
+	print sshCMD
 	cmd = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE, stderr=subprocess.PIPE)
 	output, error = cmd.communicate()
 	returncode = cmd.returncode
