@@ -20,8 +20,34 @@ cDateBG="colour202"
 cDateTXT="colour230"
 cLoadBG="colour241"
 cLoadTXT="colour195"
-cReturnBG="colour223"
-cReturnTXT="colour232"
+cLocalIPBG="colour30"
+cLocalIPTXT="colour195"
+
+if [ "$1" == "scheme2" ]
+then
+    cStatusBG="colour23"
+    cStatusFG="colour24"
+    cActivePaneBorder="colour154"
+    cInActivePaneBorder="colour239"
+    cMessageBG="colour239"
+    cMessageFG="colour223"
+    cActivePaneNum="colour1"
+    cInActivePaneNum="colour234"
+    cClock="colour129"
+    cSessionBG="colour160"
+    cSessionPrefixBG="colour82"
+    cSessionTXT="colour231"
+    cActiveWindowBG="colour148"
+    cActiveWindowTXT="colour239"
+    cInActiveWindowBG=$cStatusBG
+    cInActiveWindowTXT="colour242"
+    cDateBG="colour202"
+    cDateTXT="colour230"
+    cLoadBG="colour241"
+    cLoadTXT="colour195"
+    cLocalIPBG="colour30"
+    cLocalIPTXT="colour195"
+fi
 
 # Length of tmux status line
 tmux set -g status-left-length 30
@@ -51,13 +77,14 @@ tmux set-window-option -g clock-mode-colour $cClock #blue
 
 # Left of Status bar
 tmux set-option -g status-left "\
-#[fg=$cSessionTXT, bg=$cSessionBG, bold]#{?client_prefix,#[bg=$cSessionPrefixBG],} #S:#I.#P\
+#[fg=$cSessionTXT, bg=$cSessionBG, bold]#{?client_prefix,#[bg=$cSessionPrefixBG],} #S:#I.#P \
 #[fg=$cSessionBG, bg=$cInActiveWindowBG]#{?client_prefix,#[fg=$cSessionPrefixBG],}#{?#{==:#I,1},#[bg=$cActiveWindowBG],}"
 
 # Right of Status bar
 tmux set-option -g status-right "\
-#[fg=$cLoadBG, bg=$cStatusBG]#[fg=$cLoadTXT bg=$cLoadBG]#(~/dotfiles/tmux/scripts/loadaverage.sh) \
-#[fg=$cDateBG, bg=$cLoadBG]#[fg=$cDateTXT, bg=$cDateBG ,bold]  %a %b %d, %H:%M "
+#[fg=$cLoadBG, bg=$cStatusBG]#[fg=$cLoadTXT bg=$cLoadBG] #(~/dotfiles/tmux/scripts/loadaverage.sh) \
+#[fg=$cLocalIPBG, bg=$cLoadBG]#[fg=$cLocalIPTXT, bg=$cLocalIPBG] #(~/dotfiles/tmux/scripts/localip.sh) \
+#[fg=$cDateBG, bg=$cLocalIPBG]#[fg=$cDateTXT, bg=$cDateBG ,bold]  %a %b %d, %H:%M "
 
 # Active Window in Status bar
 tmux set-window-option -g window-status-current-format "\
