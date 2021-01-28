@@ -9,6 +9,7 @@ cMessageFG="colour223"
 cActivePaneNum="colour1"
 cInActivePaneNum="colour234"
 cClock="colour129"
+
 cSessionBG="colour76"
 cSessionPrefixBG="colour82"
 cSessionTXT="colour0"
@@ -16,42 +17,19 @@ cActiveWindowBG="colour45"
 cActiveWindowTXT="colour239"
 cInActiveWindowBG=$cStatusBG
 cInActiveWindowTXT="colour242"
-cDateBG="colour202"
-cDateTXT="colour230"
+
 cLoadBG="colour241"
 cLoadTXT="colour195"
-cLocalIPBG="colour30"
-cLocalIPTXT="colour195"
-
-if [ "$1" == "scheme2" ]
-then
-    cStatusBG="colour23"
-    cStatusFG="colour24"
-    cActivePaneBorder="colour154"
-    cInActivePaneBorder="colour239"
-    cMessageBG="colour239"
-    cMessageFG="colour223"
-    cActivePaneNum="colour1"
-    cInActivePaneNum="colour234"
-    cClock="colour129"
-    cSessionBG="colour160"
-    cSessionPrefixBG="colour82"
-    cSessionTXT="colour231"
-    cActiveWindowBG="colour148"
-    cActiveWindowTXT="colour239"
-    cInActiveWindowBG=$cStatusBG
-    cInActiveWindowTXT="colour242"
-    cDateBG="colour202"
-    cDateTXT="colour230"
-    cLoadBG="colour241"
-    cLoadTXT="colour195"
-    cLocalIPBG="colour30"
-    cLocalIPTXT="colour195"
-fi
+cSpotifyBG="colour83"
+cSpotifyTXT="colour239"
+cLocalIPBG="colour202"
+cLocalIPTXT="colour230"
+cDateBG="colour27"
+cDateTXT="colour230"
 
 # Length of tmux status line
 tmux set -g status-left-length 30
-tmux set -g status-right-length 150
+tmux set -g status-right-length 250
 
 tmux set-option -g status "on"
 tmux set -g window-status-separator ''
@@ -83,7 +61,8 @@ tmux set-option -g status-left "\
 # Right of Status bar
 tmux set-option -g status-right "\
 #[fg=$cLoadBG, bg=$cStatusBG]#[fg=$cLoadTXT bg=$cLoadBG] #(~/dotfiles/tmux/scripts/loadaverage.sh) \
-#[fg=$cLocalIPBG, bg=$cLoadBG]#[fg=$cLocalIPTXT, bg=$cLocalIPBG] #(~/dotfiles/tmux/scripts/localip.sh) \
+#[fg=$cSpotifyBG, bg=$cLoadBG]#[fg=$cSpotifyTXT bg=$cSpotifyBG]  #(~/dotfiles/tmux/scripts/spotifyplaying.sh) \
+#[fg=$cLocalIPBG, bg=$cSpotifyBG]#[fg=$cLocalIPTXT, bg=$cLocalIPBG] #(~/dotfiles/tmux/scripts/localip.sh) \
 #[fg=$cDateBG, bg=$cLocalIPBG]#[fg=$cDateTXT, bg=$cDateBG ,bold]  %a %b %d, %H:%M "
 
 # Active Window in Status bar
