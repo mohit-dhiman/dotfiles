@@ -20,6 +20,10 @@ for nic in "${all_nics[@]}"; do
 done
 ipall=""
 len="${#ips[@]}"
+if [ $len -lt 1 ]
+then
+    ipall=""    
+fi
 for (( i=0; i<$len; i++ )); do 
     ipall+=${ips[$i]}" "
     if [ "$((i+1))" != $len ]
