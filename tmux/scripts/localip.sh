@@ -14,6 +14,8 @@ for nic in "${all_nics[@]}"; do
             ;;
         tun*) type=""
             ;;
+        pp*) type=""
+            ;;
 
     esac
     [ -n "$lan_ip" ] && ips+=($type" "$lan_ip)
