@@ -1,0 +1,13 @@
+diff --git a/cmd-list-panes.c b/cmd-list-panes.c
+index c6dcff2..f3d4f13 100644
+--- a/cmd-list-panes.c
++++ b/cmd-list-panes.c
+@@ -100,7 +100,7 @@ cmd_list_panes_window(struct cmd *self, struct session *s, struct winlink *wl,
+ 	if (template == NULL) {
+ 		switch (type) {
+ 		case 0:
+-			template = "#{pane_index}: "
++			template = "#{pane_index}: [#{pane_title}]"
+ 			    "[#{pane_width}x#{pane_height}] [history "
+ 			    "#{history_size}/#{history_limit}, "
+ 			    "#{history_bytes} bytes] #{pane_id}"

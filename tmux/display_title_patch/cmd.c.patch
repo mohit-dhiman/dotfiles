@@ -1,0 +1,20 @@
+diff --git a/cmd.c b/cmd.c
+index 775bdb7..cd208db 100644
+--- a/cmd.c
++++ b/cmd.c
+@@ -46,6 +46,7 @@ extern const struct cmd_entry cmd_display_menu_entry;
+ extern const struct cmd_entry cmd_display_message_entry;
+ extern const struct cmd_entry cmd_display_popup_entry;
+ extern const struct cmd_entry cmd_display_panes_entry;
++extern const struct cmd_entry cmd_display_panes_title_entry;
+ extern const struct cmd_entry cmd_down_pane_entry;
+ extern const struct cmd_entry cmd_find_window_entry;
+ extern const struct cmd_entry cmd_has_session_entry;
+@@ -137,6 +138,7 @@ const struct cmd_entry *cmd_table[] = {
+ 	&cmd_display_message_entry,
+ 	&cmd_display_popup_entry,
+ 	&cmd_display_panes_entry,
++	&cmd_display_panes_title_entry,
+ 	&cmd_find_window_entry,
+ 	&cmd_has_session_entry,
+ 	&cmd_if_shell_entry,
