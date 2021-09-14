@@ -2,11 +2,11 @@
 
 cStatusBG="colour238"
 cStatusFG="colour223"
-cActivePaneBorder="colour214"
+cActivePaneBorder="colour27"
 cInActivePaneBorder="colour239"
 cMessageBG="colour239"
 cMessageFG="colour223"
-cActivePaneNum="colour1"
+cActivePaneNum="colour27"
 cInActivePaneNum="colour234"
 cClock="colour129"
 

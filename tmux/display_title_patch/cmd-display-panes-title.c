@@ -58,8 +58,8 @@ cmd_display_panes_draw_pane(struct screen_redraw_ctx *ctx,
 	struct window		*w = wp->window;
 	struct grid_cell	 fgc, bgc;
 	u_int			 pane, idx, px, py, i, j, xoff, yoff, sx, sy, itr, is_char;
-	int			 colour, active_colour;
-	char			 buf[16], lbuf[16], rbuf[16], *ptr, pane_title[6], ch;
+	int			 colour, active_colour, pane_title_length = 9;
+	char			 buf[16], lbuf[16], rbuf[16], *ptr, pane_title[pane_title_length], ch;
 	size_t			 len, llen, rlen;
 
 	if (wp->xoff + wp->sx <= ctx->ox ||
@@ -113,10 +113,10 @@ cmd_display_panes_draw_pane(struct screen_redraw_ctx *ctx,
 	if (window_pane_index(wp, &pane) != 0)
 		fatalx("index not found");
 	//len = xsnprintf(buf, sizeof buf, "%u", pane);
-    memcpy(pane_title, wp->base.title, 5);
-    if (pane_title[4] != '\0')
-        pane_title[4] = '_';
-    pane_title[5] = '\0';
+    memcpy(pane_title, wp->base.title, pane_title_length - 1);
+    if (pane_title[pane_title_length - 2] != '\0')
+        pane_title[pane_title_length - 2] = '^';
+    pane_title[pane_title_length - 1] = '\0';
     itr = 0;
     while (pane_title[itr]) {
         ch = pane_title[itr];
@@ -166,17 +166,21 @@ cmd_display_panes_draw_pane(struct screen_redraw_ctx *ctx,
 	tty_attributes(tty, &bgc, &grid_default_cell, NULL);
 	for (ptr = buf; *ptr != '\0'; ptr++) {
         is_char = 1; 
-        if (!(*ptr >= '0' || *ptr <= '9' || *ptr >= 'A' || *ptr <= 'Z' || *ptr == ':' || *ptr == '_'))
-			continue;
-        if (*ptr >= '0' && *ptr <= '9') {
-           is_char = 0; 
-           idx = *ptr - '0';
-        } else if (*ptr == ':') {
-           idx = 26;
-        } else if (*ptr == '_') {
-           idx = 27;
+        if (!((*ptr >= '0' && *ptr <= '9') || (*ptr >= 'A' && *ptr <= 'Z') || *ptr == ':' || *ptr == '_' || *ptr == '^')) {
+            idx = 27;
         } else {
-           idx = *ptr - 'A';
+            if (*ptr >= '0' && *ptr <= '9') {
+                is_char = 0; 
+                idx = *ptr - '0';
+            } else if (*ptr == ':') {
+                idx = 26;
+            } else if (*ptr == '_') {
+                idx = 27;
+            } else if (*ptr == '^') {
+                idx = 28;
+            } else {
+                idx = *ptr - 'A';
+            }
         }
 
 		for (j = 0; j < 5; j++) {
