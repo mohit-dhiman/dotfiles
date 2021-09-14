@@ -1,8 +1,8 @@
 diff --git a/window-clock.c b/window-clock.c
-index 8cef3f9..ed0c554 100644
+index 8cef3f9..76ef6a7 100644
 --- a/window-clock.c
 +++ b/window-clock.c
-@@ -50,6 +50,149 @@ struct window_clock_mode_data {
+@@ -50,6 +50,154 @@ struct window_clock_mode_data {
  	struct event		timer;
  };
  
@@ -142,7 +142,12 @@ index 8cef3f9..ed0c554 100644
 +	  { 0,0,0,0,0 },
 +	  { 0,0,1,0,0 },
 +	  { 0,0,0,0,0 } },
-+    { { 0,0,0,0,0 }, /* .. */
++    { { 0,0,0,0,0 }, /* _ */
++	  { 0,0,0,0,0 },
++	  { 0,0,0,0,0 },
++	  { 0,0,0,0,0 },
++	  { 1,1,1,1,1 } },
++    { { 0,0,0,0,0 }, /* ... */
 +	  { 0,0,0,0,0 },
 +	  { 0,0,0,0,0 },
 +	  { 0,0,0,0,0 },
@@ -152,7 +157,7 @@ index 8cef3f9..ed0c554 100644
  const char window_clock_table[14][5][5] = {
  	{ { 1,1,1,1,1 }, /* 0 */
  	  { 1,0,0,0,1 },
-@@ -111,7 +254,7 @@ const char window_clock_table[14][5][5] = {
+@@ -111,7 +259,7 @@ const char window_clock_table[14][5][5] = {
  	  { 1,1,1,1,1 },
  	  { 1,0,0,0,1 },
  	  { 1,0,0,0,1 } },
