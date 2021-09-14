@@ -6,7 +6,7 @@ index 8cef3f9..ed0c554 100644
  	struct event		timer;
  };
  
-+const char window_title_table[28][5][5]= {
++const char window_title_table[29][5][5]= {
 +    { { 0,1,1,1,0 }, /* A */
 +	  { 1,0,0,0,1 },
 +	  { 1,1,1,1,1 },

@@ -6,7 +6,7 @@ index 5889968..3d09df2 100644
  /* window-clock.c */
  extern const struct window_mode window_clock_mode;
  extern const char window_clock_table[14][5][5];
-+extern const char window_title_table[28][5][5];
++extern const char window_title_table[29][5][5];
  
  /* window-client.c */
  extern const struct window_mode window_client_mode;
