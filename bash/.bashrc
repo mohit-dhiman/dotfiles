@@ -23,6 +23,6 @@ export PS1="[\u@\h \W]\[\033[00;31m\]\$(git_branch)\[\033[00m\]\$ "
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 #[ -f ~/dotfiles/generalscripts/prompt.sh ] && source ~/dotfiles/generalscripts/prompt.sh
 
-export PROMPT_COMMAND='printf "\033k%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
+#export PROMPT_COMMAND='printf "\033k%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
 source ~/dotfiles/bash/sync-history.sh
 
