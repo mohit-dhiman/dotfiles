@@ -1,11 +1,13 @@
-#!/bin/python
+#!/usr/bin/python3
 
 import sys
 import subprocess
 import shlex
 import os
+from os.path import expanduser
 
-confpath = "/root/.sshmap.conf"
+home = expanduser("~")
+confpath = home + "/.sshmap.conf"
 dataDict = {}
 
 def basicChecks():
@@ -30,19 +32,13 @@ def basicChecks():
 
 def getSSHCommand(option):
 	sshCMD = None
-	if dataDict.has_key(option):
+	if option in dataDict:
 		sshCMD = dataDict[option]
 	else:
 		print("No ssh command mapping for destination " + option)
 		exit()
 
-	command = "copyq copy '" + sshCMD + "'"
-	print sshCMD
-	cmd = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE, stderr=subprocess.PIPE)
-	output, error = cmd.communicate()
-	returncode = cmd.returncode
-	if returncode != 0:
-		print("Error executing command", error)
+	print(sshCMD)
 
 option = basicChecks()
 getSSHCommand(option)

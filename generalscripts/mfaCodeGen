@@ -1,11 +1,13 @@
-#!/bin/python
+#!/usr/bin/python3
 
 import sys
 import subprocess
 import shlex
 import os
+from os.path import expanduser
 
-confpath = "/root/.mfakeys.conf"
+home = expanduser("~")
+confpath = home + "/.mfakeys.conf"
 dataDict = {}
 
 def basicChecks():
@@ -30,7 +32,7 @@ def basicChecks():
 
 def getCodeForApp(option):
 	mfakey = None
-	if dataDict.has_key(option):
+	if option in dataDict:
 		mfakey = dataDict[option]
 	else:
 		print("No MFA key for app " + option)
@@ -42,14 +44,8 @@ def getCodeForApp(option):
 	returncode = cmd.returncode
 	if returncode != 0:
 		print("Error executing command", error)
-	mfacode = str(output).rstrip()
-
-	command = "copyq copy '" + mfacode + "'"
-	cmd = subprocess.Popen(shlex.split(command), stdout = subprocess.PIPE, stderr=subprocess.PIPE)
-	output, error = cmd.communicate()
-	returncode = cmd.returncode
-	if returncode != 0:
-		print("Error executing command", error)
+	#mfacode = str(output).rstrip()
+	mfacode = output.decode("utf-8").rstrip()
 	print(mfacode)
 
 option = basicChecks()
