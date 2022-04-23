@@ -10,9 +10,9 @@ cActivePaneNum="colour27"
 cInActivePaneNum="colour234"
 cClock="colour129"
 
-cSessionBG="colour220"
-cSessionPrefixBG="colour226"
-cSessionTXT="colour0"
+cSessionBG="colour203"
+cSessionPrefixBG="colour205"
+cSessionTXT="colour255"
 cActiveWindowBG="colour45"
 cActiveWindowTXT="colour239"
 cInActiveWindowBG=$cStatusBG
@@ -55,7 +55,7 @@ tmux set-window-option -g clock-mode-colour $cClock #blue
 
 # Left of Status bar
 tmux set-option -g status-left "\
-#[fg=$cSessionTXT, bg=$cSessionBG, bold]#{?client_prefix,#[bg=$cSessionPrefixBG],}  #S:#I.#P \
+#[fg=$cSessionTXT, bg=$cSessionBG, bold]#{?client_prefix,#[bg=$cSessionPrefixBG],}  #S:#I.#P/#{window_panes} \
 #[fg=$cSessionBG, bg=$cInActiveWindowBG]#{?client_prefix,#[fg=$cSessionPrefixBG],}#{?#{==:#I,1},#[bg=$cActiveWindowBG],}"
 
 # Right of Status bar
