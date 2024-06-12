@@ -61,9 +61,9 @@ tmux set-option -g status-left "\
 # Right of Status bar
 tmux set-option -g status-right "\
 #[fg=$cLoadBG, bg=$cStatusBG]#[fg=$cLoadTXT bg=$cLoadBG] #(~/dotfiles/tmux/mac/scripts/loadaverage.zsh) \
-#[fg=$cMusicBG, bg=$cLoadBG]#[fg=$cMusicTXT bg=$cMusicBG] ﱘ #(~/dotfiles/tmux/mac/scripts/musicplaying.zsh) \
+#[fg=$cMusicBG, bg=$cLoadBG]#[fg=$cMusicTXT bg=$cMusicBG] 󰝚 #(~/dotfiles/tmux/mac/scripts/musicplaying.zsh) \
 #[fg=$cLocalIPBG, bg=$cMusicBG]#[fg=$cLocalIPTXT, bg=$cLocalIPBG] #(~/dotfiles/tmux/mac/scripts/localip.zsh) \
-#[fg=$cDateBG, bg=$cLocalIPBG]#[fg=$cDateTXT, bg=$cDateBG ,bold]  %a %b %d, %H:%M "
+#[fg=$cDateBG, bg=$cLocalIPBG]#[fg=$cDateTXT, bg=$cDateBG ,bold] 󰃯 %a %b %d, %H:%M "
 
 # Active Window in Status bar
 tmux set-window-option -g window-status-current-format "\

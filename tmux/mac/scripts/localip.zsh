@@ -5,11 +5,11 @@ for nic in "${all_nics[@]}"; do
     lan_ip="$(ip addr show ${nic} | grep '\<inet\>' | cut -d ' ' -f2 | cut -d '/' -f1)"
     type=""
     case ${nic} in
-        eth*) type=""
+        eth*) type="󰈁"
             ;;
-        en*) type=""
+        en*) type="󰖩"
             ;;
-        wl*) type=""
+        wl*) type="󰖩"
             ;;
         tun*) type=""
             ;;
@@ -23,7 +23,7 @@ ipall=""
 len="${#ips[@]}"
 if [ $len -lt 1 ]
 then
-    ipall=""    
+    ipall="󰈂"    
 fi
 for (( i=0; i<$len; i++ )); do 
     ipall+=${ips[$i]}" "
