@@ -2,7 +2,7 @@ all_nics=$(ifconfig | pcregrep -M -o '^[^\t:]+(?=:([^\n]|\n\t)*status: active)')
 all_nics=(${all_nics[@]})
 ips=()
 for nic in "${all_nics[@]}"; do
-    lan_ip="$(ip addr show ${nic} | grep '\<inet\>' | cut -d ' ' -f2 | cut -d '/' -f1)"
+    lan_ip="$(ip addr show ${nic} | grep '\<inet\>' | awk -F" " '{print $2}' | awk -F"/" '{print $1}')"
     type=""
     case ${nic} in
         eth*) type="󰈁"
