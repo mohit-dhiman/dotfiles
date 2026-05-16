@@ -1,3 +1,4 @@
+alias cl="claude"
 alias cp="cp -i"
 alias cds="cd /Users/mohitdhiman/Workspaces"
 alias cdc="cd /Users/mohitdhiman/Workspaces/carsales"
@@ -9,3 +10,4 @@ alias tf="terraform"
 alias ll="ls -ltrh"
 alias jqp='pbpaste | jq .'
 alias jqc='pbpaste | jq . | tee >(pbcopy)'
+alias add='sh ~/Workspaces/sublime-notes/scripts/add.sh'
