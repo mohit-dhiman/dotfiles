@@ -11,3 +11,4 @@ alias ll="ls -ltrh"
 alias jqp='pbpaste | jq .'
 alias jqc='pbpaste | jq . | tee >(pbcopy)'
 alias add='sh ~/Workspaces/sublime-notes/scripts/add.sh'
+alias scratch='uv run ~/dotfiles/generalscripts/scratch.py'
