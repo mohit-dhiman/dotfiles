@@ -1,4 +1,4 @@
-all_nics=$(ifconfig | pcregrep -M -o '^[^\t:]+(?=:([^\n]|\n\t)*status: active)')
+all_nics=$(ifconfig | pcre2grep -M -o '^[^\t:]+(?=:([^\n]|\n\t)*status: active)')
 all_nics=(${all_nics[@]})
 ips=()
 for nic in "${all_nics[@]}"; do
