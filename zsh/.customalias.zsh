@@ -8,6 +8,7 @@ tmx() { tmux a -t Endor || tmux new -t Mac -s Endor}
 alias grep="ggrep --color=auto"
 alias tf="terraform"
 alias ll="ls -ltrh"
+alias lll="ls -ltrha"
 alias jqp='pbpaste | jq .'
 alias jqc='pbpaste | jq . | tee >(pbcopy)'
 alias add='sh ~/Workspaces/sublime-notes/scripts/add.sh'
