@@ -137,10 +137,10 @@ def main():
     )
 
     style = Style.from_dict({
-        "textarea":     "#00b4d8 bg:#ffffff",
+        "textarea":     "#cc241d bg:#ffffff",
         "title":        "bg:#f2f4f5 #333333",
         "title.pad":    "bg:#f2f4f5",
-        "title.icon":   "bg:#f2f4f5 #00b4d8 bold",
+        "title.icon":   "bg:#f2f4f5 #cc241d bold",
         "title.name":   "bg:#f2f4f5 #222222 bold",
         "title.sep":    "bg:#f2f4f5 #cccccc",
         "title.path":   "bg:#f2f4f5 #aaaaaa",
